@@ -16,6 +16,14 @@ public class Activity {
     private double durationInHours;
     private double costPerHour;
     
+    public Activity()
+    {
+        activityName = "not set";
+        MET = 0.0;
+        durationInHours = 0.0;
+        costPerHour = 0.0;
+    }
+    
     public Activity(String InActivityName, double InMET, double InDurationInHours, double InCostPerHour)
     {
         if (!InActivityName.equals(""))
@@ -28,9 +36,9 @@ public class Activity {
         else
             MET = 0.0;
         
-        durationInHours = 0;
+        durationInHours = 0.0;
         
-        costPerHour = 0;    
+        costPerHour = 0.0;    
     }
     
     public String getActivityName()
@@ -85,6 +93,9 @@ public class Activity {
     
     public double totalCost()
     {
-        return costPerHour * durationInHours;
+        if (costPerHour > 0 && durationInHours > 0)
+            return costPerHour * durationInHours;
+        else
+            return 0;
     }
 }
