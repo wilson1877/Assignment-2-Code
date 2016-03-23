@@ -7,7 +7,7 @@ package assignment.pkg2.code;
 
 /**
  *
- * @author Wilson5801
+ * @author Wilson Chang Kai Mun     B1500510    17.3.2016
  */
 public class Activity {
     
