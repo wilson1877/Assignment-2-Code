@@ -36,9 +36,15 @@ public class Activity {
         else
             MET = 0.0;
         
-        durationInHours = 0.0;
+        if (InDurationInHours > 0)
+            durationInHours = InDurationInHours;
+        else
+            durationInHours = 0.0;
         
-        costPerHour = 0.0;    
+        if (InCostPerHour > 0)
+            costPerHour = InCostPerHour;
+        else
+            costPerHour = 0.0;  
     }
     
     public String getActivityName()

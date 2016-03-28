@@ -46,17 +46,17 @@ public class MemberList {
         return null;
     }
     
-    public Member highestBMI(String name, double BMI)
+    public Member highestBMI()
     {
-        String highestName = "";
         double highestBmi = 0.0;
+        int customerPos = 0;
         for (int j = 0; j < numOfCustomer; j++)
             if (highestBmi < customer[j].getBMI())
             {
-                highestBmi = BMI;
-                highestName = name;
+                highestBmi = customer[j].getBMI();
+                customerPos = j;
             }
-        return null;
+        return customer[customerPos];
     }
     
     public double averageWeight(double weight)
