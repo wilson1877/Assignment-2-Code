@@ -68,5 +68,13 @@ public class ActivityList {
         }
         return activityType[index];
     }
+    
+    public String getAll()
+    {
+        String message = "All members :-";
+        for (int j = 0; j < activityCount; j++)
+            message += activityType[j].toString() + "\n";
+        return message;
+    }
 }
 

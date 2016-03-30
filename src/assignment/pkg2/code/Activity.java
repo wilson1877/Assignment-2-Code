@@ -46,6 +46,10 @@ public class Activity {
         else
             costPerHour = 0.0;  
     }
+
+    Activity(String activityName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public String getActivityName()
     {
