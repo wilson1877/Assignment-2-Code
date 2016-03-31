@@ -46,10 +46,6 @@ public class Activity {
         else
             costPerHour = 0.0;  
     }
-
-    Activity(String activityName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public String getActivityName()
     {
@@ -98,7 +94,7 @@ public class Activity {
     @Override
     public String toString()
     {
-        return "You in " + activityName + " with MET of " + MET + " have play " + durationInHours + " hrs which cost RM" + costPerHour + " per hour. Thank you for playing. Have a nice day.";
+        return "You in " + activityName + " with MET of " + MET + " have play " + durationInHours + " hrs which cost RM" + costPerHour + " per hour.";
     }
     
     public double totalCost()
