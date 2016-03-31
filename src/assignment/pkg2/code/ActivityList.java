@@ -7,7 +7,8 @@ package assignment.pkg2.code;
 
 /**
  *
- * @author Wilson5801
+ * @author TAN ZHELIANG B1400653 21/3/2016
+ * Container class for activity.java
  */
 public class ActivityList {
     private final int SIZE = 20;
@@ -69,11 +70,10 @@ public class ActivityList {
         return activityType[index];
     }
     
-    public String getAll()
-    {
-        String message = "All members :-";
-        for (int j = 0; j < activityCount; j++)
-            message += activityType[j].toString() + "\n";
+    public String getAll() {
+        String message = "All activities :- \n";
+        for (int i = 0; i < activityCount; i++)
+            message += activityType[i].toString() + "\n";
         return message;
     }
 }
