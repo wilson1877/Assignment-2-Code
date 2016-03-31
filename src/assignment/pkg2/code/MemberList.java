@@ -73,7 +73,7 @@ public class MemberList {
     
     public String getAll()
     {
-        String message = "All members :-";
+        String message = "All members :- \n";
         for (int j = 0; j < numOfCustomer; j++)
             message += customer[j].toString() + "\n";
         return message;

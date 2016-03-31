@@ -79,8 +79,8 @@ public class Member {
     
     // toString method
     public String toString() {
-        return "Club member: " + name + " with weight :" + weightInKg + "KG and height: " + heightInM +
-                "M.";
+        return "Club member: " + name + " with weight: " + weightInKg + "KG and height: " + heightInM +
+                "M";
     }
     
     // calculate BMI method
