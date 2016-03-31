@@ -41,14 +41,14 @@ public class MemberList {
     public Member findMember(String name)
     {
         for (int j = 0; j < numOfCustomer; j++)
-            if (customer[j].getMemberName().equals(name))
+            if (customer[j].getMemberName().equalsIgnoreCase(name))
                 return customer[j];
         return null;
     }
     
     public Member highestBMI()
     {
-        double highestBmi = 0.0;
+        double highestBmi = 0;
         int customerPos = 0;
         for (int j = 0; j < numOfCustomer; j++)
             if (highestBmi < customer[j].getBMI())
@@ -59,7 +59,7 @@ public class MemberList {
         return customer[customerPos];
     }
     
-    public double averageWeight(double weight)
+    public double averageWeight()
     {
         double total = 0.0;
         double average = 0.0;
@@ -73,9 +73,14 @@ public class MemberList {
     
     public String getAll()
     {
-        String message = "All members :- \n";
+        String message = "All members :\n";
         for (int j = 0; j < numOfCustomer; j++)
             message += customer[j].toString() + "\n";
         return message;
+    }
+    
+    public int getNoOfMember()
+    {
+        return numOfCustomer;
     }
 }
