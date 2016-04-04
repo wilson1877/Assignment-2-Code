@@ -42,7 +42,7 @@ public class ActivityList {
     
     public Activity findActivity(String inName) {
         for (int i = 0 ; i < activityCount ; i++) {
-            if (activityType[i].getActivityName().equals(inName)) 
+            if (activityType[i].getActivityName().equalsIgnoreCase(inName)) 
                 return activityType[i]; 
             }
         return null;
@@ -71,9 +71,16 @@ public class ActivityList {
     }
     
     public String getAll() {
-        String message = "All activities :- \n";
+        String message = "Activities :- \n";
         for (int i = 0; i < activityCount; i++)
             message += activityType[i].toString() + "\n";
+        return message;
+    }
+    
+    public String getActivityList() {
+        String message = "Available activities :\n";
+        for (int i = 0 ; i < activityCount; i++)
+            message += (i+1) + ". " + activityType[i].getActivityName() + "\n";
         return message;
     }
 }

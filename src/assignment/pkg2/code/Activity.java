@@ -94,7 +94,8 @@ public class Activity {
     @Override
     public String toString()
     {
-        return "You in " + activityName + " with MET of " + MET + " have play " + durationInHours + " hrs which cost RM" + costPerHour + " per hour.";
+        return "Activity: " + activityName + " has MET of " + MET + " with duration of "
+                + durationInHours + " hours which costs RM" + costPerHour + " per hour.";
     }
     
     public double totalCost()

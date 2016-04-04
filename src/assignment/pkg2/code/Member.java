@@ -14,12 +14,17 @@ public class Member {
     // Initialise variables
     private String name;
     private double weightInKg, heightInM;
+    private ActivityList listOfActivities;
+    private double totalCost, totalCaloriesBurned;
     
     // No argument constructor
     public Member() {
         name = "Unassigned";
         weightInKg = 0.0;
         heightInM = 0.0;
+        listOfActivities = new ActivityList(10);
+        totalCost = 0.0;
+        totalCaloriesBurned = 0.0;
     }
     
     // Constructor with arguments
@@ -43,6 +48,9 @@ public class Member {
         else {
             heightInM = 0.0;
         }
+        listOfActivities = new ActivityList(10);
+        totalCost = 0.0;
+        totalCaloriesBurned = 0.0;
     }
     
     // Getter methods
@@ -56,6 +64,18 @@ public class Member {
     
     public double getMemberHeight() {
         return heightInM;
+    }
+    
+    public ActivityList getActivityList() {
+        return listOfActivities;
+    }
+    
+    public double getTotalCost() {
+        return totalCost;
+    }
+    
+    public double getTotalCaloriesBurned() {
+        return totalCaloriesBurned;
     }
     
     // Setter methods
@@ -75,6 +95,15 @@ public class Member {
         if (inHeight > 0) {
             heightInM = inHeight;
         }
+    }
+    
+    // Increment method
+    public void increaseTotalCost(double cost) {
+        totalCost += cost;
+    }
+    
+    public void increaseTotalCaloriesBurned (double calories) {
+        totalCaloriesBurned += calories;
     }
     
     // toString method
