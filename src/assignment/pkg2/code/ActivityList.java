@@ -11,7 +11,7 @@ package assignment.pkg2.code;
  * Container class for activity.java
  */
 public class ActivityList {
-    private final int SIZE = 20;
+    private final int SIZE = 10;
     private Activity[] activityType;
     private int activityCount;
     

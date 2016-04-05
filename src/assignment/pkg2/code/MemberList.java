@@ -11,16 +11,18 @@ package assignment.pkg2.code;
  */
 public class MemberList {
     
-    private final int SIZE = 50;
-    private Member[] customer;
+    private final int SIZE = 10;
+    private Member[] customer;  //array of Member objects
     private int numOfCustomer;
     
+    //constructor which sets to default size
     public MemberList()
     {
         customer = new Member[SIZE];
         numOfCustomer = 0;
     }
     
+    //constuctor which sets to size passed in
     public MemberList(int size)
     {
         if (size < 0)
@@ -30,22 +32,26 @@ public class MemberList {
         numOfCustomer = 0;
     }
     
+    //method to add member
     public boolean addMember(Member custo)
     {
+        //return false if the list is full
         if (numOfCustomer == customer.length)
             return false;
         customer[numOfCustomer++] = custo;
         return true;
     }
     
+    //method to find a particular member
     public Member findMember(String name)
     {
         for (int j = 0; j < numOfCustomer; j++)
             if (customer[j].getMemberName().equalsIgnoreCase(name))
                 return customer[j];
-        return null;
+        return null;    //not found
     }
     
+    //method to calculate highest BMI
     public Member highestBMI()
     {
         double highestBmi = 0;
@@ -56,9 +62,10 @@ public class MemberList {
                 highestBmi = customer[j].getBMI();
                 customerPos = j;
             }
-        return customer[customerPos];
+        return customer[customerPos];   //return customer position in array
     }
     
+    //method to calculate average weight
     public double averageWeight()
     {
         double total = 0.0;
@@ -71,6 +78,7 @@ public class MemberList {
         return average;    
     }
     
+    //method to return all information of every members stored
     public String getAll()
     {
         String message = "All members :\n";
@@ -79,6 +87,7 @@ public class MemberList {
         return message;
     }
     
+    //method to return total number of member
     public int getNoOfMember()
     {
         return numOfCustomer;
