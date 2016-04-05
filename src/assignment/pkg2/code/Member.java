@@ -14,7 +14,7 @@ public class Member {
     // Initialise variables
     private String name;
     private double weightInKg, heightInM;
-    private ActivityList listOfActivities;
+    private ActivityList listOfActivities, tempList;
     private double totalCost, totalCaloriesBurned;
     
     // No argument constructor
@@ -23,6 +23,7 @@ public class Member {
         weightInKg = 0.0;
         heightInM = 0.0;
         listOfActivities = new ActivityList(10);
+        tempList = new ActivityList(10);
         totalCost = 0.0;
         totalCaloriesBurned = 0.0;
     }
@@ -49,6 +50,7 @@ public class Member {
             heightInM = 0.0;
         }
         listOfActivities = new ActivityList(10);
+        tempList = new ActivityList(10);
         totalCost = 0.0;
         totalCaloriesBurned = 0.0;
     }
@@ -115,5 +117,13 @@ public class Member {
     // calculate BMI method
     public double getBMI() {
         return weightInKg / (heightInM * heightInM);
+    }
+    
+    // Clone list
+    public ActivityList cloneList(ActivityList act) {
+        for (int i = 0; i < act.getActivityCount(); i++) {
+            tempList.addActivity(act.getActivity(i));
+        }
+        return tempList;
     }
 }

@@ -70,7 +70,7 @@ public class FitnessClub {
     
     //add activity
     public static void addActivity(ActivityList a)
-    {        
+    {
         System.out.print("Enter the activity's name: ");
         String activityName = sc.nextLine();
         Activity similarActivity = a.findActivity(activityName);
@@ -154,7 +154,7 @@ public class FitnessClub {
     
     //change an activity's information
     public static void updateActivityInformation(ActivityList a)
-    {        
+    {
         System.out.print("Which activity's information you wish to change? ");
         String wantedActivity = sc.nextLine();
         
@@ -219,6 +219,7 @@ public class FitnessClub {
         }        
     } //end of updateActivityInformation
     
+    // Add member method
     public static void addMember() {
         String name;
         double mWeight, mHeight;
@@ -246,6 +247,7 @@ public class FitnessClub {
             mHeight = sc.nextDouble();
             sc.nextLine();
         }
+        System.out.println("");
         
         Member newMember = new Member(name, mWeight, mHeight);
         if (members.addMember(newMember))
@@ -255,6 +257,7 @@ public class FitnessClub {
         
     } // end of add member method
     
+    // Show all member information method
     public static void showMemberInfo() {
         System.out.println(members.getAll());
         System.out.print("The highest BMI: ");
@@ -263,6 +266,7 @@ public class FitnessClub {
         System.out.println("The average weight of all members is: " + members.averageWeight());
     } // end of show info method
     
+    // Update member info method
     public static void changeMemberInfo() {
         double weight, height;
         System.out.print("Enter the name of member to update: ");
@@ -320,7 +324,6 @@ public class FitnessClub {
     {
         String activity;
         Activity found;
-        //double BMI, totalCaloriesBurned = 0, totalCost = 0;
         System.out.print("Enter the name of member to record: ");
         String name = sc.nextLine();
         
@@ -337,7 +340,7 @@ public class FitnessClub {
             System.out.println("No such member exists");
         else {
             int choice;
-            
+            ActivityList tempList = recorded.cloneList(a);
             do {
                 System.out.println("");
                 System.out.println("1. Add activity for member");
@@ -353,52 +356,48 @@ public class FitnessClub {
                 
                 switch (choice) {
                     case 1:
-                        System.out.println(a.getActivityList());
-                        System.out.print("Your choice: ");
-                        activity = sc.nextLine();
-                        System.out.println("");
-                        
-                        // input cannot be blank
-                        while (activity.equals(""))
-                            {
-                                System.out.println("No input.");
-                                System.out.print("Please re-enter the activity's name: ");
-                                activity = sc.nextLine();
-                            }
-                        found = a.findActivity(activity);
-                        
-                        //activity not found
-                        if (found == null)
-                            System.out.println("No such activity exists");
+                        if (tempList.getActivityCount() == 0)
+                            System.out.println("No more available activities");
                         else {
-                            recorded.getActivityList().addActivity(found);
-                            System.out.println("Activity recorded! \n");
+                            System.out.println(tempList.getActivityList());
+                            System.out.print("Your choice: ");
+                            activity = sc.nextLine();
+                            System.out.println("");
+                        
+                            // input cannot be blank
+                            while (activity.equals(""))
+                                {
+                                    System.out.println("No input.");
+                                    System.out.print("Please re-enter the activity's name: ");
+                                    activity = sc.nextLine();
+                                }
+                            found = a.findActivity(activity);
+                        
+                            //activity not found
+                            if (found == null)
+                                System.out.println("No such activity exists");
+                            else {
+                                recorded.getActivityList().addActivity(found);
+                                System.out.println("Activity recorded! \n");
+                                tempList.removeActivity(found);
                             
-                            // calculate cost for this activity
-                            double cost = found.totalCost();
-                            // sum up cost
-                            recorded.increaseTotalCost(cost);
+                                // calculate cost for this activity
+                                double cost = found.totalCost();
+                                // sum up cost
+                                recorded.increaseTotalCost(cost);
                             
-                            // calculate calories burned for this activity
-                            double caloriesBurned = (found.getDurationInHours() * 
-                                    found.getMET() * recorded.getMemberWeight());
-                            // sum up calories burned
-                            recorded.increaseTotalCaloriesBurned(caloriesBurned);
+                                // calculate calories burned for this activity
+                                double caloriesBurned = (found.getDurationInHours() *
+                                        found.getMET() * recorded.getMemberWeight());
+                                // sum up calories burned
+                                recorded.increaseTotalCaloriesBurned(caloriesBurned);
                             
-                            System.out.printf("This activity costs RM%.2f\n" ,cost);
-                            System.out.printf("Calories burned while doing this activity is %.2fkcal.\n",
+                                System.out.printf("This activity costs RM%.2f\n" ,cost);
+                                System.out.printf("Calories burned while doing this activity is %.2fkcal.\n",
                                     caloriesBurned);
-                            
-                            /*double cost = found.totalCost();
-                            double caloriesBurned = (found.getDurationInHours() * 
-                                    found.getMET() * recorded.getMemberWeight());
-                            System.out.printf("This activity costs RM%.2f\n" ,cost);
-                            System.out.println("Calories burned while doing this activity is "
-                                    + caloriesBurned + "kcal.");
-                            totalCost += cost;
-                            totalCaloriesBurned += caloriesBurned;
-                            System.out.println("Activity recorded!");*/
-                        }
+                            } // end of nested else
+                        } // end of else
+                        
                         break;
                     case 2:
                         System.out.printf("%s has a BMI of %.2f",recorded.getMemberName(),recorded.getBMI());
@@ -413,9 +412,12 @@ public class FitnessClub {
                         ,recorded.getTotalCaloriesBurned());
                         break;
                     case 5:    
-                        System.out.printf("This member %s has joined: ", name);
+                        System.out.printf("This member %s has joined: ", recorded.getMemberName());
                         System.out.println("");
                         System.out.println(recorded.getActivityList().getAll());
+                        break;
+                    case 0:
+                        System.out.println("End.");
                         break;
                     default:
                         System.out.println("Invalid choice. \n");
