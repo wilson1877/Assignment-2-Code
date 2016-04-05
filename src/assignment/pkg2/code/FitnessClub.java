@@ -171,12 +171,12 @@ public class FitnessClub {
         //no activity found
         if (foundAct == null)
         {
-            System.out.printf("This activity %s has not yet stored in the system.", wantedActivity);
+            System.out.printf("This activity %s has not yet stored in the system.", foundAct.getActivityName());
             System.out.println("\n");
         }
         else
         {
-            System.out.println("Activity found: " + wantedActivity);
+            System.out.println("Activity found: " + foundAct.getActivityName());
             System.out.println("");
             System.out.println("Please choose to proceed");
             System.out.println("1.  Change duration");
@@ -272,7 +272,7 @@ public class FitnessClub {
         System.out.print("Enter the name of member to update: ");
         String name = sc.nextLine();
         while (name.equals("")) {
-            System.out.println("Name cannot be blank");
+            System.out.println("Name cannot be blank\nEnter again: ");
             name = sc.nextLine();
         }
         Member updated = members.findMember(name);
@@ -360,7 +360,7 @@ public class FitnessClub {
                             System.out.println("No more available activities");
                         else {
                             System.out.println(tempList.getActivityList());
-                            System.out.print("Your choice: ");
+                            System.out.print("Enter activity name: ");
                             activity = sc.nextLine();
                             System.out.println("");
                         
